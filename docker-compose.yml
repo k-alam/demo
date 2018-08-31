@@ -1,19 +1,20 @@
-db:
-  image: mongo
+version: '3'
+services:
 
-notifications:
-  build: ./notifications
-  environment: 
-      port: "2223"
-weblami1a:
-  build: .
-  ports:
-    - "3000:2222"
-  environment: 
-    port: "2222"
-    mongoUri: "mongodb://db/lam_land"
-  volumes: 
-    - .:/var/www/lam_land
-  links: 
-    - db
-    - notifications
+  db:
+    image: mongo
+
+  notifications:
+    build: ./notifications
+    environment: 
+        port: "2223"
+  weblami1a:
+    build: .
+    ports:
+      - "3000:2222"
+    environment: 
+      port: "2222"
+      mongoUri: "mongodb://db/lam_land"
+    volumes: 
+      - .:/var/www/lam_land
+    
