@@ -1,0 +1,12 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: lam-land-pod
+  labels:
+    name: lam-land-ngnx
+spec:
+  containers:
+  - name: lam-nginx-cont
+    image: nginx
+    ports:
+      - containerPort: 80

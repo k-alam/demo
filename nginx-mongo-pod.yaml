@@ -1,0 +1,24 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: lam-land-web
+  labels:
+    name: lam-land-web
+    env: stage
+    version: "1"
+      
+spec:
+  containers:
+  - name: lam-nginx
+    image: nginx
+    ports:
+      - containerPort: 80
+  - name: lam-mong
+    image: mongo
+    volumeMounts:
+      - name: lam-storage
+        mountPath:  /data/lam
+  volumes:
+    - name: lam-storage
+      emptyDir: {}
+   

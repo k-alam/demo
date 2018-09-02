@@ -1,6 +1,6 @@
 {
-  "name": "land-lam-omi",
-  "version": "1.0.0",
+  "name": "lam-land",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

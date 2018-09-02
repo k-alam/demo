@@ -1,0 +1,151 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "creationTimestamp": "2018-08-31T09:18:17Z",
+        "labels": {
+            "name": "lam-land-web"
+        },
+        "name": "lam-land-web",
+        "namespace": "default",
+        "resourceVersion": "8657",
+        "selfLink": "/api/v1/namespaces/default/pods/lam-land-web",
+        "uid": "cba2030e-acfe-11e8-915b-080027ccd0a5"
+    },
+    "spec": {
+        "containers": [
+            {
+                "image": "nginx",
+                "imagePullPolicy": "Always",
+                "name": "lam-nginx",
+                "ports": [
+                    {
+                        "containerPort": 80,
+                        "protocol": "TCP"
+                    }
+                ],
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-qrp8j",
+                        "readOnly": true
+                    }
+                ]
+            },
+            {
+                "image": "mongo",
+                "imagePullPolicy": "Always",
+                "name": "lam-mong",
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/data/lam",
+                        "name": "lam-storage"
+                    },
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-qrp8j",
+                        "readOnly": true
+                    }
+                ]
+            }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "nodeName": "minikube",
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/not-ready",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            },
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/unreachable",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            }
+        ],
+        "volumes": [
+            {
+                "emptyDir": {},
+                "name": "lam-storage"
+            },
+            {
+                "name": "default-token-qrp8j",
+                "secret": {
+                    "defaultMode": 420,
+                    "secretName": "default-token-qrp8j"
+                }
+            }
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2018-08-31T09:18:18Z",
+                "status": "True",
+                "type": "Initialized"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2018-08-31T09:20:27Z",
+                "status": "True",
+                "type": "Ready"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2018-08-31T09:18:17Z",
+                "status": "True",
+                "type": "PodScheduled"
+            }
+        ],
+        "containerStatuses": [
+            {
+                "containerID": "docker://6aeceda64b00aaa846ed34b2e65b17e1443f6c54e87149329b38a1772f805956",
+                "image": "mongo:latest",
+                "imageID": "docker-pullable://mongo@sha256:e40c5b535cb2f1f39dba4687abfd0ecbec89520aba1945484ea00cf8688d4595",
+                "lastState": {},
+                "name": "lam-mong",
+                "ready": true,
+                "restartCount": 0,
+                "state": {
+                    "running": {
+                        "startedAt": "2018-08-31T09:20:26Z"
+                    }
+                }
+            },
+            {
+                "containerID": "docker://4df6d5f61838e553a9ed5f68c5975a45ce67c3ba9b3074cf5adf9d67bdfaf18f",
+                "image": "nginx:latest",
+                "imageID": "docker-pullable://nginx@sha256:291e15f504cdc40aeedcd29b59f0079c794e18f22cd8a6a6d66d646b36f1d51b",
+                "lastState": {},
+                "name": "lam-nginx",
+                "ready": true,
+                "restartCount": 0,
+                "state": {
+                    "running": {
+                        "startedAt": "2018-08-31T09:18:43Z"
+                    }
+                }
+            }
+        ],
+        "hostIP": "10.0.2.15",
+        "phase": "Running",
+        "podIP": "172.17.0.5",
+        "qosClass": "BestEffort",
+        "startTime": "2018-08-31T09:18:18Z"
+    }
+}
