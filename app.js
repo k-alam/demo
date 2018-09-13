@@ -32,10 +32,6 @@ app.use('/css',express.static(path.join(__dirname, 'public/css')));
 app.use('/vdo',express.static(path.join(__dirname, 'public/vdo')));
 app.use('/img',express.static(path.join(__dirname, 'public/img')));
 //DAshboard
-app.use('/dashboard/js',express.static(path.join(__dirname, 'public/dashboard/js')));
-app.use('/dashboard/css',express.static(path.join(__dirname, 'public/dashboard/css')));
-app.use('/dashboard/vdo',express.static(path.join(__dirname, 'public/dashboard/vdo')));
-app.use('/dashboard/img',express.static(path.join(__dirname, 'public/dashboard/img')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

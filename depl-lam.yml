@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: ng-lam-db
+    env: dev
+    ver: v1.0.0
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ng-lam-db
+       
+  template:
+    metadata:
+      name:  lamcom
+      labels:
+        app: ng-lam-db
+        release: canary
+    spec:
+      containers:
+      - name: lam_ng
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+      - name: lam_land
+        image: lami1a/lam_land
+        ports:
+        - containerPort: 2222 
+      - name: lam_db
+        image: mongo
+        ports:
+        - containerPort: 27017 
+
